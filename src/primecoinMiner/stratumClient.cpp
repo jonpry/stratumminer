@@ -69,7 +69,7 @@ void stratumClient_foundShare(stratumClient_t* client, primecoinBlock_t* pblock)
 */
 	char *buf = new char[1024];
 	pthread_mutex_lock(&client->cs_shareSubmit);
-	sprintf(buf,"{\"params\": [\"%s\",\"%x\",\"%8.8x\",\"%8.8x\",\"%8.8x\",\"%s\"],\"id\": %d, \"method\": \"mining.submit\"}\n",
+	sprintf(buf,"{\"params\": [\"%s\",\"%8.8x\",\"%8.8x\",\"%8.8x\",\"%8.8x\",\"%s\"],\"id\": %d, \"method\": \"mining.submit\"}\n",
 			client->username, pblock->serverData.blockHeight, htonl(pblock->extraNonce), htonl(pblock->timestamp), htonl(pblock->nonce), mult, client->nextId++); 
 
 	client->shares.push_back(buf);
